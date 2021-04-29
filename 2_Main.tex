@@ -1,67 +1,6 @@
-\documentclass[english]{psi_easy}
-
-%% Language and font encodings
-\usepackage[english]{babel}
-\usepackage[utf8x]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{comment} 
-
-%% Useful packages
-\usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage[table,xcdraw]{xcolor}
-\usepackage{booktabs}
-% \usepackage[colorinlistoftodos]{todonotes}
-\usepackage[colorlinks=true, allcolors=blue]{hyperref}
-
-% float placement
-\usepackage{float}
-
-% cable color bullets
-\usepackage{tikz}
-
-% for trademark sign 'circledR'
-\usepackage{amssymb}
-
-% for PSI logo on Rolfs title page
-\usepackage{epsfig}
-
-%% Set title here for EASY title page
-\PsiEasyTitle{Guideline: Device cables and connectors for \EtherCAT{} motion control and simple IO}
-
-% ---- custom commands
-% Schneidersche Einrueckung in 'itemize'
-\newcommand{\itemIndent}[2]{{\makebox[3cm]{#1:\hfill} #2.}}
-% draw colored circle
-\newcommand{\wireColor}[1]{\tikz\draw[black,fill=#1] (0,0) circle (.9ex); #1}
-\newcommand{\EtherCAT}[0]{EtherCAT$^{\tiny{\circledR}}$}
-% ---- custom commands end
-
-%% Document begins here
-\begin{document}
-
-%
-% --- Title page by R. Follath
-% comment the next line for EASY export, as the cover page is handled by the system
-\input 0_titlePage
-
-% set page counter to '2', as easy will create the cover page and need the PDF for import to start on page 2.
-\clearpage
-\setcounter{page}{2}
-
-%% TOC
-\tableofcontents
-
-%% Abstract
-\begin{abstract}
-This guideline summarizes the requirements for cable and connector selection as well as routing for SLS~2.0 and all new installations in other facilities of PSI utilizing \EtherCAT{} based motion control and simple IO.
-The guideline will define strict requirements, indicated by the word ‘\textbf{must}’ or ‘\textbf{mandatory}’, as well as strong suggestions indicated by the word ‘\textbf{should}’.
-Weak requirements are indicated by the word ‘\textbf{preferred}’.
-This guideline describes devices operated in air, under normal environmental conditions (298~K (25~$^\circ$C), 1013~mbar, 50~\%~rH) no or low radiation.
-Exceptions apply for devices operated in any other environments including, but not limited to, vacuum, low temperature, strong magnetic fields or high radiation.
-Common exceptions are described in the respective sections.
-\end{abstract}
-
+\section{Geltungsbereich}
+Ausnahmen keine neuer Standard
+Absegnen durch ElNet
 %% Actual Text
 \section{General Rules}
 
@@ -412,8 +351,3 @@ Phoenix Contact
 % You can find a \href{https://www.overleaf.com/help/97-how-to-include-a-bibliography-using-bibtex}{video tutorial here} to learn more about BibTeX.
 
 % We hope you find Overleaf useful, and please let us know if you have any feedback using the help menu --- or use the contact form at \url{https://www.overleaf.com/contact}!
-
-\bibliographystyle{plain}
-\bibliography{companies}
-
-\end{document}
