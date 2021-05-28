@@ -1,27 +1,28 @@
-\section{Geltungsbereich}
-Ausnahmen keine neuer Standard
-Absegnen durch ElNet
-%% Actual Text
-\section{General Rules}
+\section{Scope}
+This guideline applies to all new installations at PSI utilizing \EtherCAT{} based motion control and simple IO, based on ECMC or TwinCAT3.
+Exceptions apply.
+If any of the herein defined specifications cannot be met, an exception request has to be filed to ElNet Motion.
+Exceptions are granted on a case-to-case basis and do \textbf{not} automatically extend this guideline.
+The guideline will define strict requirements, indicated by the word ‘\textbf{must}’ or ‘\textbf{mandatory}’, as well as strong suggestions indicated by the word ‘\textbf{should}’.
+Weak requirements are indicated by the word ‘\textbf{preferred}’.
+This guideline describes devices operated in air, under normal environmental conditions (298~K (25~$^\circ$C), 1013~mbar, 50~\%~rH) no or low radiation.
+Exceptions apply for devices operated in any other environments including, but not limited to, vacuum, low temperature, strong magnetic fields or high radiation.
 
+
+
+\section{General Rules}
 \subsection{Patching}
-% This paragraph describes the signal path from the actuator/sensor to the controller.
-% The signal path can comprise various patch panels.
-% This includes \emph{(a)}~a device patch panels\footnote{Suppliers are only required to deliver device patch panels. Subsequent patching is handled at PSI.}, \emph{(b)}~an optional intermediate patch panel and \emph{(c)}~a mandatory controller patch panel.
-% Depending on the size, complexity multiple device patch panels are allowed.
-% Requirements for the patch panels are given below:
 \begin{itemize}
     \item A device patch panel is mandatory.
     \item For larger devices, multiple device patch panels are allowed.
     The placement should allow easy access during operation. 
     The placement is subject to discussion during the design phase and has to be approved by PSI during the final design review (FDR).
     \item If the manufacturer prefers to supply a cabinet or other enclosure to handle the signal distribution, this is subject of approval by PSI.
-            In this case the internal routing has to account for signal cross talk.
-            The outside connection must meet the requirements of the device patch panel. 
+    In this case the internal routing has to account for signal cross talk.
+    The outside connection must meet the requirements of the device patch panel. 
     \item Male connectors must be used on the device patch panel.
-    % \item Female connectors must be used on the controller patch panel.
     \item Patch panel feedthroughs must be placed with at least 30~mm spacing center to center.
-            The orientation must comply with Fig.~\ref{fig:PanelCutOut} to allow interference free connection of angled connectors.
+    The orientation must comply with Fig.~\ref{fig:PanelCutOut} to allow interference free connection of angled connectors.
 \end{itemize}
 
 \begin{figure}[H]
@@ -80,6 +81,7 @@ Connectors must be encapsulated or protected from direct access/touch. At minimu
     \item The BOM\footnote{bill of materials} of the CAD assembly should indicate the utilized connector type, vendor and part number. Alternatively, a separate list of components must be provided.
 \end{itemize}
 
+\pagebreak
 \section{Connectors and Cables}
 
 In this section, the connector types as well as the pinouts are defined.
@@ -99,7 +101,7 @@ An overview of the connectors with pinouts for their various applications is giv
 \centering
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
-\textbf{}                         & \textbf{Stepper} & \textbf{Encoder} & \textbf{Limits} & \textbf{Pt-100} & \textbf{TC}\footnote{thermocouple} & \textbf{Requirement} \\ \hline
+\textbf{}                         & \textbf{Stepper} & \textbf{Encoder} & \textbf{Limits} & \textbf{Pt-100} & \textbf{TC}\footnotemark & \textbf{Requirement} \\ \hline
 \textbf{Connector type}           & \multicolumn{5}{c|}{M12}                                                              & must                 \\ \hline
 \textbf{Coding}                   & \multicolumn{5}{c|}{A}                                                                & must                 \\ \hline
 \textbf{Contacts}                 & 4                & 8                & 5               & 5               & 5           & must                 \\ \hline
@@ -109,6 +111,7 @@ An overview of the connectors with pinouts for their various applications is giv
 \end{tabular}
 \end{minipage}
 \end{table}
+\footnotetext{thermocouple}
 
 \subsection{Stepper motors}
 Only Beckhoff cables should be used due to the larger conductor cross section, compared to standard M12 cables.
@@ -167,7 +170,7 @@ Pin & Signal & Color             \\ \midrule
 \end{itemize}
 
 \subsection{Encoders}
-All encoders must be absolute. The information length should be restricted to 26 bit for linear encoders or 12/13 bit for multi turn rotary encoders. Higher information length has to be approved by PSI. Any other encoder type also has to be approved by PSI with a detailed description why the afore defined requirements cannot be met.
+All encoders must be absolute. The communication protocol must be SSI or BiSS-C. Any other encoder type has to be approved by PSI with a detailed description why the afore defined requirements cannot be met.
 
 \begin{table}[H]
 \centering
@@ -308,19 +311,25 @@ Pin & Signal & Color             \\
 \subsubsection{Pin assignment for thermocouples}
 For thermocouples only the pinout is defined, conductor color an type can be chosen as needed.
 
+% \footnote{\label{note1}Optional: For cold junction compensation (Pt1000 required)}
+
 \begin{table}[H]
 \centering
 \caption{\label{tab:TCPinout}Pin assignment thermocouple.}
+\begin{minipage}{\linewidth}
+\centering
 \begin{tabular}{@{}p{1cm}p{4cm}p{4cm}@{}}
 \toprule
 Pin & Signal & Color             \\ \midrule
-1   & Compensation A \footnote{Optional: For cold junction compensation (Pt1000 required)}   & free \\ \midrule
+1   & Compensation A\footnotemark     & free \\ \midrule
 2   & Input~$+$           & free \\ \midrule
-3   & GND \footnote{Optional: For cold junction compensation (Pt1000 required)}              & free \\ \midrule
+3   & GND\footnotemark[\value{footnote}]  & free \\ \midrule
 4   & Input~$-$           & free  \\ \midrule
 5   & Shield            & free  \\ \bottomrule
 \end{tabular}
+\end{minipage}
 \end{table}
+\footnotetext{Optional: For cold junction compensation (Pt1000 required)}
 
 \begin{figure}[H]
 \centering
